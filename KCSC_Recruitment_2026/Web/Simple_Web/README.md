@@ -1,11 +1,13 @@
-
-# Description
-
-> A simple website covers some secrets. You must login as admin user. But how can you do that?
-> 
-> Hint: unicode normalize
-> 
-> Author: l1nx1n
+---
+title: "Simple Web"
+id: "Simple_Web"
+author: "l1nx1n"
+description: "A simple website covers some secrets. You must login as admin user. But how can you do that?\n\nHint: unicode normalize"
+points: 388
+difficulty: "Medium"
+readTime: "2 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -33,7 +35,7 @@ Mục đích ban đầu của mình là tạo một tài khoản tương tự `a
 
 ![](assets/ehfhgdfg.png)
 
-Mình có thử ghé qua endpoint `/flag` thì nhận được một response duy nhất là 
+Mình có thử ghé qua endpoint `/flag` thì nhận được một response duy nhất là
 
 `Only local access allowed`
 
@@ -43,7 +45,7 @@ Sau đấy mình thấy giao diện ở `/admin` yêu cầu nhập url để che
 
 `You can not access the flag directly`
 
-Không vào được `/flag` mình thử tiếp `/admin` 
+Không vào được `/flag` mình thử tiếp `/admin`
 
 ![](assets/636363.png)
 
@@ -55,7 +57,7 @@ Về sau thì mình có nhờ thêm AI gen cho mình một đống thứ để f
 
 ![](assets/ncnsdf.png)
 
-Thế là tự dưng mình có flag ?:vv 
+Thế là tự dưng mình có flag ?:vv
 
 Hỏi thử anh chị trong ban ra đề thì hình như có một cách nào đấy để mình xem được phần nó filter input ra sao nhưng mò mãi mà mình vẫn không tìm ra O_O
 

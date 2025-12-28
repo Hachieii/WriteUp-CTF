@@ -1,17 +1,19 @@
-
-# Description
-
-> Bạn thực sự muốn trở thành một Web player trong câu lạc bộ KCSC? Hãy thử ghi tên bạn vào danh sách một lần nữa.
-> 
-> Author: nartgnourt
-> 
-> ka-ce-et-ce.zip
+---
+title: "Ka Cê Ét Cê Revenge"
+id: "Ka_Ce_Et_Ce_Revenge"
+author: "nartgnourt"
+description: "Bạn thực sự muốn trở thành một Web player trong câu lạc bộ KCSC? Hãy thử ghi tên bạn vào danh sách một lần nữa."
+points: 460
+difficulty: "Medium"
+readTime: "2 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
 Bài này giống với bài bản thường chỉ có điều là đã patch lỗ hổng trong hàm `isAdmin` của class `KCSC` khiến cho việc fake token là bất khả thi
 
-Mình thành công giải được bài này theo hướng unintended bằng cách lấy secret mà class JWT sử dụng để tạo key **trong chall bản thường** do author quên để nó là random :vv 
+Mình thành công giải được bài này theo hướng unintended bằng cách lấy secret mà class JWT sử dụng để tạo key **trong chall bản thường** do author quên để nó là random :vv
 
 Sau đấy mình tạo token mới rồi giải y hệt bản thường là ra flag
 
@@ -54,7 +56,7 @@ Secret key của cả hai phiên bản đều được hardcode vào trong sourc
 
 Và thế là mình mở lại chall trước rồi gửi request lấy file `JWT.php`
 
-Thông qua `compose.yaml` mình biết được địa chỉ của web nằm ở ```/var/www/html```
+Thông qua `compose.yaml` mình biết được địa chỉ của web nằm ở `/var/www/html`
 
 **compose.yaml**
 
@@ -66,7 +68,7 @@ services:
       - ./src:/var/www/html
     networks:
       - kcsc-network
-      
+
   apache:
     build: ./apache
     ports:
@@ -105,4 +107,3 @@ Sau khi mình thử lấy token thường ở chall revenge và ướm thử v�
 Việc còn lại của mình chỉ là đổi role thành `admin` và giải y hệt bản thường là sẽ ra được flag
 
 **Flag**: `KCSC{0hh_w40000_m07_l4n_nu4_m1nh_l41_chuc_mun9_b4n_d4_7r0_7h4nh_m07_7h4nh_v13n_cu4_kc5c_nh0000}`
-

@@ -1,11 +1,13 @@
-
-# Description
-
-> Thu thập bi rồng -> RCE -> Flag
-> 
-> Author: bashu
->
-> public.zip
+---
+title: "Bảy Viên Ngọc Rồng"
+id: "Bay-Vien-Bi-Rong"
+author: "bashu"
+description: "Thu thập bi rồng -> RCE -> Flag"
+points: 50
+difficulty: "Medium"
+readTime: "5 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -16,7 +18,6 @@ Trang web có tính năng đăng nhập mỗi ngày để thu thập 7 viên ng�
 Tải thư mục **public.zip** về và giải nén mình có thư mục như sau:
 
 ![](assets/image.png)
-
 
 Ta biết flag nằm ở `/flag.txt` thông qua file docker
 
@@ -40,8 +41,8 @@ Sau khi ngồi phân tích đống file trong thư mục **classes** thì mình 
 ```php
 <?php
 class Wish {
-    public $content;   
-    public $callback;   
+    public $content;
+    public $callback;
 
     public function __toString() {
         return $this->content ?? '';
@@ -90,7 +91,7 @@ class Shenron {
 ?>
 ```
 
-Lỗ hổng nằm ở method **__destruct()**, nếu như điều kiện được thỏa mãn thì nó sẽ gọi hàm **grant()** `$current_wish`
+Lỗ hổng nằm ở method **\_\_destruct()**, nếu như điều kiện được thỏa mãn thì nó sẽ gọi hàm **grant()** `$current_wish`
 
 Mà như đã phân tích ở trong `Wish.php`, hàm grant() sẽ có thể gọi tới một hàm nguy hiểm như **system** nếu như ta có thể kiểm soát các giá trị của nó
 
@@ -156,7 +157,7 @@ $user = @unserialize($data);
 if (!$user instanceof User) return null;
 ```
 
-Nếu như `$data` không phải là một instance của class **User** thì máy chủ sẽ không làm gì cả, khiến cho phiên làm việc của nó kết thúc và kích hoạt method **__destruct()** nếu có
+Nếu như `$data` không phải là một instance của class **User** thì máy chủ sẽ không làm gì cả, khiến cho phiên làm việc của nó kết thúc và kích hoạt method **\_\_destruct()** nếu có
 
 Và vì trong file có include cả `Shenron.php` và `Wish.php` nên mình nghĩ ngay tới việc tạo ra một class **Shenron** với `$current_wish` là class **Wish** với `$callback` là `system` còn `$content` là lệnh để lấy flag
 
@@ -253,8 +254,8 @@ class Shenron {
 }
 
 class Wish {
-    public $content;   
-    public $callback;   
+    public $content;
+    public $callback;
 
     public function __toString() {
         return $this->content ?? '';

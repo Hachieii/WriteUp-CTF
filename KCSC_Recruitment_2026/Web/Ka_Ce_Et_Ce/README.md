@@ -1,13 +1,13 @@
-
-# Description
-
-> Bạn thực sự muốn trở thành một Web player trong câu lạc bộ KCSC? Hãy thử ghi tên bạn vào danh sách.
-> 
-> Author: nartgnourt
-> 
-> Fetch Instance 
->
-> ka-ce-et-ce.zip
+---
+title: "Ka Cê Ét Cê"
+id: "Ka_Ce_Et_Ce"
+author: "nartgnourt"
+description: "Bạn thực sự muốn trở thành một Web player trong câu lạc bộ KCSC? Hãy thử ghi tên bạn vào danh sách."
+points: 428
+difficulty: "Medium"
+readTime: "8 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -321,7 +321,7 @@ Sau đó tiến hành chỉnh sửa **role** thành **admin**
 
 ![](assets/rherherherh.png)
 
-` eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjU3NTM2OTcsImV4cCI6MTc2NTc1NzI5N30.FEiq_nL1TWznIxDAUgC-YINd-7SfUbbid9FbWYx9G_Q`
+`eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjU3NTM2OTcsImV4cCI6MTc2NTc1NzI5N30.FEiq_nL1TWznIxDAUgC-YINd-7SfUbbid9FbWYx9G_Q`
 
 Cuối cùng là dùng nó để truy cập `/admin.php`
 
@@ -369,65 +369,65 @@ Ngồi mất một hồi lâu mình quyết định lục tiếp source xem có 
 
 - `admin.php` gửi request tới endpoint `/api/members/update.php`
 
-    - ```php
-        async function saveChanges() {
-            const content = editor.getValue();
-            const btn = document.querySelector('.btn-save');
+  - ```php
+      async function saveChanges() {
+          const content = editor.getValue();
+          const btn = document.querySelector('.btn-save');
 
-            btn.disabled = true;
-            btn.textContent = 'Saving...';
+          btn.disabled = true;
+          btn.textContent = 'Saving...';
 
-            try {
-                const res = await fetch('/api/members/update.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        xml_content: content
-                    })
-                });
-        ...
-        ```
+          try {
+              const res = await fetch('/api/members/update.php', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      xml_content: content
+                  })
+              });
+      ...
+    ```
 
 - `update.php` tiếp tục kiểm tra token của người chơi thông qua `kcsc->isAdmin($token)` rồi gọi tới `$kcsc->update_members($xml_content)`
 
-    - ```php
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            http_response_code(400);
-            $result->message = 'Only POST request!';
-        } else {
-            $token = $_COOKIE['token'] ?? null;
-            if (is_null($token)) {
-                http_response_code(401);
-                $result->message = 'Please provide cookie token!';
-            } else if (!$kcsc->isAdmin($token)) {
-                http_response_code(403);
-                $result->message = 'You are not admin!';
-            } else {
-                $input = file_get_contents('php://input');
-                $data = json_decode($input, true);
+  - ```php
+      if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+          http_response_code(400);
+          $result->message = 'Only POST request!';
+      } else {
+          $token = $_COOKIE['token'] ?? null;
+          if (is_null($token)) {
+              http_response_code(401);
+              $result->message = 'Please provide cookie token!';
+          } else if (!$kcsc->isAdmin($token)) {
+              http_response_code(403);
+              $result->message = 'You are not admin!';
+          } else {
+              $input = file_get_contents('php://input');
+              $data = json_decode($input, true);
 
-                if (!isset($data['xml_content'])) {
-                    http_response_code(400);
-                    $result->message = 'Missing xml_content parameter!';
-                } else {
-                    $xml_content = $data['xml_content'];
-                    $updateResult = $kcsc->update_members($xml_content);
+              if (!isset($data['xml_content'])) {
+                  http_response_code(400);
+                  $result->message = 'Missing xml_content parameter!';
+              } else {
+                  $xml_content = $data['xml_content'];
+                  $updateResult = $kcsc->update_members($xml_content);
 
-                    if ($updateResult['success']) {
-                        $result->message = $updateResult['message'];
-                    } else {
-                        http_response_code(400);
-                        $result->message = $updateResult['message'];
-                        if (isset($updateResult['errors'])) {
-                            $result->errors = $updateResult['errors'];
-                        }
-                    }
-                }
-            }
-        }
-      ```
+                  if ($updateResult['success']) {
+                      $result->message = $updateResult['message'];
+                  } else {
+                      http_response_code(400);
+                      $result->message = $updateResult['message'];
+                      if (isset($updateResult['errors'])) {
+                          $result->errors = $updateResult['errors'];
+                      }
+                  }
+              }
+          }
+      }
+    ```
 
 - Hàm `$kcsc->update_members($xml_content)` kiểm tra xem nội dung của file **xml** mình gửi có hợp lệ không, nếu có thì tiến hành cập nhật vào file `members.xml`
 
@@ -482,7 +482,7 @@ Quả thực là mình đã nhận được nội dung file
 
 ```json
 {
-    "message": "Admin c2gALWMAbXYgL2ZsYWcudHh0IC9mbGFnX2Y0NmVmOTQyNzQzMjI1ZjA5NDk5OWIyNmFmMzA4MGQwLnR4dCAmJiBwaHAtZnBtIC1EICYmIGh0dHBkIC1EIEZPUkVHUk9VTkQgJiYgdGFpbCAtZiAvZGV2L251bGwA updated members.xml file"
+  "message": "Admin c2gALWMAbXYgL2ZsYWcudHh0IC9mbGFnX2Y0NmVmOTQyNzQzMjI1ZjA5NDk5OWIyNmFmMzA4MGQwLnR4dCAmJiBwaHAtZnBtIC1EICYmIGh0dHBkIC1EIEZPUkVHUk9VTkQgJiYgdGFpbCAtZiAvZGV2L251bGwA updated members.xml file"
 }
 ```
 

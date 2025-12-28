@@ -1,9 +1,13 @@
-
-# Description
-
-> Santa is selling Mystery Gift Boxes in the store, can you get it?
->
-> Author : duc193
+---
+title: "Santa's Shop"
+id: "Santas_Shop"
+author: "duc193"
+description: "Santa is selling Mystery Gift Boxes in the store, can you get it?"
+points: 50
+difficulty: "Very Easy"
+readTime: "1 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -17,6 +21,5 @@ Challenge cho ta một trang web có giao diện đăng kí và đăng nhập t�
 
 ![](assets/Screenshot%202025-12-14%20210444.png)
 
-**Flag**: 
+**Flag**:
 `KCSC{m3rry_chr1stm4s_4nd_h4ppy_h4ck1ng}`
-

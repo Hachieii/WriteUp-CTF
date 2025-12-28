@@ -1,17 +1,19 @@
-
-# Description
-
-> QR Code Generator with security additions
->
-> Author: Nightcore
->
-> public.zip
+---
+title: "SECURE SHARE"
+id: "SECURE_SHARE"
+author: "Nightcore"
+description: "QR Code Generator with security additions"
+points: 50
+difficulty: "Medium"
+readTime: "5 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
 Trang web cho phép người dùng tạo ra qr dựa trên dữ liệu nhập vào và xử lý gần như mọi thứ qua thẻ **{sys:gate}** và **{sys:qrcode}**. Hai thẻ đó sẽ được bắt bằng Regex và lấy nội dung bên trong để xử lý. Lỗ hổng nằm ở việc ta có thể chèn một đoạn code độc hại vào mà vẫn qua được các filter để đạt được RCE
 
-> Thú thật bài này mình nhìn đống regex thấy đái quá mình vứt cho AI giải hộ luôn -_- cơ mà mình cũng sẽ cố gắng để giải thích nhiều thứ nhất có thể
+> Thú thật bài này mình nhìn đống regex thấy đái quá mình vứt cho AI giải hộ luôn -\_- cơ mà mình cũng sẽ cố gắng để giải thích nhiều thứ nhất có thể
 
 # Initial reconnaissance
 
@@ -131,15 +133,15 @@ class AppEngine
                 } else {
                     $html = '<form method="POST" style="margin: 20px 0;" autocomplete="off">
                         <input type="text" name="url" placeholder="Enter URL to generate QR code" autocomplete="off"
-                               style="width: 70%; padding: 12px; background: rgba(0, 20, 0, 0.8); 
-                               border: 2px solid #0f0; color: #0f0; font-family: \'Courier New\', monospace; 
+                               style="width: 70%; padding: 12px; background: rgba(0, 20, 0, 0.8);
+                               border: 2px solid #0f0; color: #0f0; font-family: \'Courier New\', monospace;
                                font-size: 1em; border-radius: 5px;" required>
-                        <button type="submit" 
-                                style="padding: 12px 25px; background: rgba(0, 255, 0, 0.2); 
-                                border: 2px solid #0f0; color: #0f0; cursor: pointer; 
-                                font-family: \'Courier New\', monospace; font-size: 1em; 
-                                border-radius: 5px; margin-left: 10px; transition: all 0.3s;" 
-                                onmouseover="this.style.background=\'rgba(0, 255, 0, 0.4)\'" 
+                        <button type="submit"
+                                style="padding: 12px 25px; background: rgba(0, 255, 0, 0.2);
+                                border: 2px solid #0f0; color: #0f0; cursor: pointer;
+                                font-family: \'Courier New\', monospace; font-size: 1em;
+                                border-radius: 5px; margin-left: 10px; transition: all 0.3s;"
+                                onmouseover="this.style.background=\'rgba(0, 255, 0, 0.4)\'"
                                 onmouseout="this.style.background=\'rgba(0, 255, 0, 0.2)\'">
                             Generate QR
                         </button>
@@ -251,7 +253,6 @@ HTML;
 echo $app->render($_tpl);
 ```
 
-
 **security_filter.php**
 
 ```php
@@ -306,4 +307,4 @@ Toàn bộ input thô của mình trên url sau dấu ? hay tham số `$_SERVER[
 
 ![](assets/yty45y.png)
 
-**Flag**: ```KCSC{m0t_lan_nua_ban_da_lam_duoc_g00d_j0bbb!!!}```
+**Flag**: `KCSC{m0t_lan_nua_ban_da_lam_duoc_g00d_j0bbb!!!}`

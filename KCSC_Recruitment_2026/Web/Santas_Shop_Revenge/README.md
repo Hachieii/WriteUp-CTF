@@ -1,9 +1,13 @@
-
-# Description
-
-> Santa is selling Mystery Gift Boxes in the store, can you get it?
->
-> Author : duc193
+---
+title: "Santa's Shop Revenge"
+id: "Santas_Shop_Revenge"
+author: "duc193"
+description: "Santa is selling Mystery Gift Boxes in the store, can you get it?"
+points: 50
+difficulty: "Easy"
+readTime: "3 min"
+date: "15-12-2025"
+---
 
 # TL;DR
 
@@ -43,9 +47,9 @@ Sau khi tra google ~~gemini~~ thì mình biết được là hàm `file_get_cont
 
 - Hàm sẽ xử lý khác nhau tùy thuộc vào đối số của nó là **Url** hay **Local Path** cụ thể:
 
-    - **Local Path**: Hàm sẽ đọc toàn bộ nội dung của file như khi ta mở bằng notepad và return nó
+  - **Local Path**: Hàm sẽ đọc toàn bộ nội dung của file như khi ta mở bằng notepad và return nó
 
-    - **Url**: Hàm sẽ gửi một request get đến url được cho vào và return nội dung của request đó
+  - **Url**: Hàm sẽ gửi một request get đến url được cho vào và return nội dung của request đó
 
 - Hàm có hỗ trợ **PHP Wrapper**
 
@@ -109,11 +113,13 @@ try {
 ```
 
 Phân tích source code, mình có những thông tin sau:
+
 - Nếu request không đến từ chính server thì sẽ ngay lập tức bị chặn
 
 - Endpoint sẽ lấy 3 giá trị từ reuqest là `username`, `coin`, và `secret` và cập nhật giá trị `coin` của `username` nếu như `secret` là chính xác
 
 Secret được so sánh sẽ được lấy ở `/secret.txt`
+
 > `$secret = trim(file_get_contents("/secret.txt"));`
 
 Tương tự mình lấy nội dung của `secret.txt` thông qua endpoint `file.php?image=`
@@ -129,5 +135,3 @@ Payload cuối cùng: `/file.php?image=http%3a%2f%2flocalhost%2fadmin.php%3fuser
 Gửi request và sau khi quay lại trang web chỉ cần mua **Mystery Gift Box** là sẽ có được flag
 
 **Flag**: `KCSC{do_you_have_the_ctrl_u_key_to_get_flags_UwU}`
-
-
