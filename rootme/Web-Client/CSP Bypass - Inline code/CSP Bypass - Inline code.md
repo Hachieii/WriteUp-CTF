@@ -6,6 +6,8 @@ description: Too lazy to configure this correctly
 points: 35
 difficulty: Medium
 date: 16-1-2026
+share_link: https://share.note.sx/e0lpjgn9#2fAIb0bE8ekEfnTh2WcALaYuCs2F5B/hSqOoCkNj5Ps
+share_updated: 2026-01-17T10:55:30+07:00
 ---
 
 # TL;DR

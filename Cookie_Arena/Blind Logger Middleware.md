@@ -6,6 +6,8 @@ description: "We log all incoming requests in a Flask web application. The middl
 points: 30
 difficulty: Medium
 date: 16-1-2026
+share_link: https://share.note.sx/lj6e7gu9#4yq/q7lUusSGbGr5JyranacL6QJa6ieBlHqxCp73Xt8
+share_updated: 2026-01-19T17:53:09+07:00
 ---
 # TL;DR
 
@@ -144,7 +146,7 @@ for table in tables:
 
 Toàn bộ query lấy thông tin của database mình đều lấy ở [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md)
 
-Script đúng ra mình viết là để dump ra toàn bộ cái database nhưng để tiết kiệm thời gian thì mình sẽ chỉ lấy bảng `flag`
+Script đúng ra mình viết là để dump ra toàn bộ cái database nhưng do mỗi lần gửi request thì bảng `logger`  lại được cập nhật, nếu cố tình trích hết thì sẽ bị lặp vô hạn cho nên mình sẽ chỉ lấy bảng `flag`
 
 Chạy script ta có kết quả sau:
 

@@ -6,6 +6,8 @@ description: Read the /flag.txt
 points: 10
 difficulty: Very easy
 date: 17-1-2026
+share_link: https://share.note.sx/nbherb0y#kT+08G58pQZEWkdng6evRt34b0yw55z8uh0RKdmybaE
+share_updated: 2026-01-19T18:03:07+07:00
 ---
 # TL;DR
 
@@ -140,9 +142,12 @@ Dưới đây là toàn bộ những lý do mà mình có thể khai thác lỗ 
 
 - Phiên bản php mà chall đang dùng là 7.2.34 (chall public `info.php` ở `/info.php`) < 8.0 nên vẫn chưa bị patch
 
-- Có một hàm thao tác với file (`md5_file` trong `checksum.php`) và ta hoàn toàn có thể tùy chỉnh đối số của hàm để gọi wrapper `phar://` giúp deserialize file `.phar` mà mình upload
+- Có một hàm thao tác với file (`file_exists` trong `checksum.php`) và ta hoàn toàn có thể tùy chỉnh đối số của hàm để gọi wrapper `phar://` giúp deserialize file `.phar` mà mình upload
 
 - Trong `checksum.php` lại import class `LogFile` trong `logging.php` mà trong đó có magic method `__destruct` gọi hàm với chức năng tạo file với tên và nội dung tùy ý
+
+> Trong file `checksum.php` vẫn còn một hàm nhận wrapper `phar://` nữa là `md5_file` nhưng do cơ chế cache của PHP mà cụ thể là vì khi file phar được deserialize bởi `file_exist` thì kết quả của wrapper đó đã được lưu trong cache, hàm `md5_file` khi gặp phải một request y hệt thì nó sẽ lấy luôn kết quả đã được cache đó mà không deserialize ra nữa
+> Tóm lại là chỉ có một object của class `LogFile` chứa shell duy nhất được tạo ra bởi hàm `file_exists` :vv
 
 Việc còn lại chỉ là tạo một file `.phar` chứa class `LogFile` được chỉnh sửa để tạo shell thôi
 
